@@ -5,11 +5,10 @@ import sqlite3
 def add(item):
   connect = sqlite3.connect('db.db')
   cursor = connect.cursor()
-  m = []
-  m.append(item.split(' '))
-  name_possition = m[0][0]
-  link_possition = m[0][1]
-  price_possition = int(m[0][2])
+
+  name_possition = item[0]
+  link_possition = item[1]
+  price_possition = item[2]
   cursor.execute('INSERT INTO sup (name,link,price) VALUES(?,?,?);',
                  (name_possition, link_possition, price_possition))
   connect.commit()
